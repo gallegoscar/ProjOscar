@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Taller CRUD Ajax + PHP</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#bt1").click(function(){;
+			var data = $("#f1").serialize();
+			$.post("update.php",data,function(returnData){
+				$("#respuesta").html(returnData);
+			});
+		});
+		$("#bt2").click(function(){;
+			var data = $("#f1").serialize();
+			$.post("insert.php",data,function(returnData){
+				$("#respuesta").html(returnData);
+			});
+		});
+		$("#bt3").click(function(){;
+			
+			$.post("readall.php",function(returnData){
+				$("#respuesta").html(returnData);
+			});
+		});
+		$("#bt4").click(function(){;
+			var data = $("#id").serialize();
+			$.post("delete.php",data,function(returnData){
+				$("#respuesta").html(returnData);
+			});
+		});
+		$("#bt5").click(function(){;
+			var data = $("#id").serialize();
+			$.post("read.php",data,function(returnData){
+				$("#respuesta").html(returnData);
+			});
+		});
+	});
+</script>
+</head>
+
+<body>
+	<div>
+		<h2>CRUD con Ajax + PHP</h2>
+		<hr>
+		<h3>Formulario</h3>
+		<form action"" name="f1" id="f1">
+			Identificacion : <input type="text" name="id" id="id"> <br>
+			Nombre : <input type="text" name="name" id="name"> <br>
+			Telefono : <input type="text" name="tel" id="tel"> <br>
+			Edad : <input type="text" name="age" id="age"> <br>
+		</form>
+			<hr>
+			<div>
+				<button name="bt2" id="bt2">Crear Estudiante</button>
+				<button name="bt1" id="bt1">Actualizar Estudiante</button>
+				<button name="bt3" id="bt3">Listar estudiantes</button>
+				<button name="bt4" id="bt4">Eliminar estudiante</button>
+				<button name="bt5" id="bt5">Buscar estudiante</button>
+			</div>
+			<hr>
+			<h3>Respuesta:</h3>
+		<div name="respuesta" id="respuesta">
+			
+		</div>
+	</div>	
+</body>
+
+</html>
